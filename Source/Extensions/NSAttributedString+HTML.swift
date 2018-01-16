@@ -29,11 +29,9 @@ extension NSAttributedString {
             throw DownErrors.htmlDataConversionError
         }
 
-        let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
-            .documentType: NSAttributedString.DocumentType.html,
-            .characterEncoding: NSNumber(value: String.Encoding.utf8.rawValue)
-        ]
-        try self.init(data: data, options: options, documentAttributes: nil)
+        try self.init(data: data,
+                      options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue],
+                      documentAttributes: nil)
     }
 
 }
