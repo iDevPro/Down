@@ -16,6 +16,8 @@ Is your app using it? [Let us know!](mailto:rob@robphillips.me)
 
 - [Rob Phillips](https://github.com/iwasrobbed)
 - [Keaton Burleson](https://github.com/128keaton)
+- [Tony Arnold](https://github.com/tonyarnold)
+- [Ken Harris](https://github.com/kengruven)
 - [Other contributors](https://github.com/iwasrobbed/Down/graphs/contributors) 🙌 
 
 ### Installation
@@ -114,7 +116,9 @@ let commonMark = try? down.toCommonMark()
 
 // Convert to an attributed string
 let attributedString = try? down.toAttributedString()
-// NSAttributedString representation of the rendered HTML
+// NSAttributedString representation of the rendered HTML;
+// by default, uses a stylesheet that matches NSAttributedString's default font,
+// but you can override this by passing in your own, using the 'stylesheet:' parameter.
 
 // Convert to abstract syntax tree
 let ast = try? down.toAST()
@@ -165,19 +169,19 @@ Each protocol has options that will influence either rendering or parsing:
 /**
  Default options
 */
-public static let Default = DownOptions(rawValue: 0)
+public static let `default` = DownOptions(rawValue: 0)
 
 // MARK: - Rendering Options
 
 /**
  Include a `data-sourcepos` attribute on all block elements
 */
-public static let SourcePos = DownOptions(rawValue: 1 << 1)
+public static let sourcePos = DownOptions(rawValue: 1 << 1)
 
 /**
  Render `softbreak` elements as hard line breaks.
 */
-public static let HardBreaks = DownOptions(rawValue: 1 << 2)
+public static let hardBreaks = DownOptions(rawValue: 1 << 2)
 
 /**
  Suppress raw HTML and unsafe links (`javascript:`, `vbscript:`,
@@ -186,29 +190,29 @@ public static let HardBreaks = DownOptions(rawValue: 1 << 2)
  by a placeholder HTML comment. Unsafe links are replaced by
  empty strings.
 */
-public static let Safe = DownOptions(rawValue: 1 << 3)
+public static let safe = DownOptions(rawValue: 1 << 3)
 
 // MARK: - Parsing Options
 
 /**
  Normalize tree by consolidating adjacent text nodes.
 */
-public static let Normalize = DownOptions(rawValue: 1 << 4)
+public static let normalize = DownOptions(rawValue: 1 << 4)
 
 /**
  Validate UTF-8 in the input before parsing, replacing illegal
  sequences with the replacement character U+FFFD.
 */
-public static let ValidateUTF8 = DownOptions(rawValue: 1 << 5)
+public static let validateUTF8 = DownOptions(rawValue: 1 << 5)
 
 /**
  Convert straight quotes to curly, --- to em dashes, -- to en dashes.
 */
-public static let Smart = DownOptions(rawValue: 1 << 6)
+public static let smart = DownOptions(rawValue: 1 << 6)
 ```
 
 ### Supports
-Swift, ARC & iOS 8+
+Swift; iOS 9+, tvOS 9+, macOS 10.11+
 
 ### Markdown Specification
 
