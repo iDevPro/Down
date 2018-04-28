@@ -30,7 +30,7 @@ extension NSAttributedString {
         }
 
         try self.init(data: data,
-                      options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html, NSAttributedString.DocumentReadingOptionKey.characterEncoding: String.Encoding.utf8.rawValue],
+                      options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue],
                       documentAttributes: nil)
     }
 
